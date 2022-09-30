@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Nik300.InterpretLayer.Types.Statements.General
 {
-    public class Debug: Statement
+    public sealed class Debug: Statement
     {
         public override string Name => "Debug";
         public override string[] AllowedContexts => null;
 
         protected override Context ExecuteStatement(Context currentContext, Document document)
         {
-            Console.WriteLine("DEBUG STATEMENT");
+            Console.WriteLine(currentContext.Variables["testVar"].Value.Object);
             return currentContext;
         }
     }

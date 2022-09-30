@@ -9,8 +9,8 @@ namespace Nik300.InterpretLayer.Types.Runtime
     public abstract class Type
     {
         public abstract string Name { get; }
-        public abstract Type Parent { get; }
-        public Context DefinitionContext { get; internal set; }
+        public virtual Type Parent { get; } = null;
+        public virtual Context DefinitionContext { get; }
         public string FullName => $"{DefinitionContext.Name}.{Name}";
 
         public abstract bool Contains(string childName);
@@ -29,5 +29,10 @@ namespace Nik300.InterpretLayer.Types.Runtime
         }
 
         public abstract bool Compare(Type other);
+        public virtual Element Call(Context current, Document document, Element element, Element @this = null, Dictionary<string, Variable> args = null) { return null; }
+
+        public virtual Element Get(Context current, Element @this, string childName) => null;
+        public virtual void Set(Context current, Element @this, string childName, Element value) { }
+        public virtual void Create(Context current, Element @this, string childName, Variable var) { }
     }
 }

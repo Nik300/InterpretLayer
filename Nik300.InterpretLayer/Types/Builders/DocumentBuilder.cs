@@ -10,8 +10,8 @@ namespace Nik300.InterpretLayer.Types.Builders
 {
     public sealed class DocumentBuilder
     {
-        public string Name { get; private set; }
-        public Statement[] Statements { get; private set; } = Array.Empty<Statement>();
+        string Name { get; set; } = null;
+        Statement[] Statements { get; set; } = Array.Empty<Statement>();
         
         internal DocumentBuilder() { }
 

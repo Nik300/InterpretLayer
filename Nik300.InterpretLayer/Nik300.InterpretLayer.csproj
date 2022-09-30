@@ -8,7 +8,6 @@
     <Folder Include="Types\Statements\Keywords\" />
     <Folder Include="Types\Statements\Manipulation\" />
     <Folder Include="Types\Statements\Math\" />
-    <Folder Include="Types\Statements\Definition\" />
   </ItemGroup>
 
 </Project>

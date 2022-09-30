@@ -8,9 +8,9 @@ namespace Nik300.InterpretLayer.Types.Runtime
 {
     public sealed class Variable
     {
-        public Type Type { get; private set; }
+        public Type Type { get; internal set; }
         public Element Value { get; internal set; }
-        public Modifier[] Modifiers { get; private set; }
+        public Modifier[] Modifiers { get; internal set; }
 
         public bool UpdateValue(Element value)
         {

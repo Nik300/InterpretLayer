@@ -18,14 +18,16 @@ namespace Nik300.InterpretLayer.Types
 
         internal int ptr = 0;
 
-        public static DocumentBuilder Builder { get; private set; } = new DocumentBuilder();
+        public static DocumentBuilder Builder { get { return new(); } }
 
         internal Document(string name, Statement[] statements)
         {
             Name = name;
             Statements = statements;
-            Contexts = new();
-            Contexts.Add(Name, new());
+            Contexts = new()
+            {
+                { Name, new() }
+            };
             Contexts[Name].UseName(Name);
         }
 
@@ -33,7 +35,7 @@ namespace Nik300.InterpretLayer.Types
         {
             if (
                 !Contexts.ContainsKey(context) || !Contexts[context].Variables.ContainsKey(varname) ||
-                (current.Name != Contexts[context].Name && Contexts[context].Variables[varname].Modifiers.Contains(Modifier.Local)) ||
+                (!current.Name.StartsWith(Contexts[context].Name) && Contexts[context].Variables[varname].Modifiers.Contains(Modifier.Local)) ||
                 (current.Imported && !current.Variables[varname].Modifiers.Contains(Modifier.Export))
                 ) return null;
             return current.Variables[varname];
@@ -43,6 +45,10 @@ namespace Nik300.InterpretLayer.Types
             return Contexts[Name];
         }
 
-        public Context RunNext(Context current) => Statements[ptr++].Execute(current, this);
+        public Context RunNext(Context current)
+        {
+            if (ptr >= Statements.Length) return null;
+            return Statements[ptr++].Execute(current, this);
+        }
     }
 }

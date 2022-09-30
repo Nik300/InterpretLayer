@@ -12,6 +12,8 @@ namespace Nik300.InterpretLayer.Types.Runtime
         Constant,
         Local,
         Global,
-        Export
+        Export,
+        Static,
+        Operator
     }
 }
