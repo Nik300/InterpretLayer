@@ -26,6 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Cosmos.System.Collections.TDictionary\Cosmos.System.Collections.csproj" />
       <ProjectReference Include="..\Nik300.InterpretLayer\Nik300.InterpretLayer.csproj" />
     </ItemGroup>
 

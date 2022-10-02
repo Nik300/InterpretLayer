@@ -43,6 +43,10 @@ namespace Nik300.InterpretLayer.Types.Builders
             }
             return this;
         }
-        public Document Build() => new(Name, Statements);
+        public Document Build()
+        {
+            if (Name is null) throw new Exception("Name required to build class Document");
+            return new(Name, Statements);
+        }
     }
 }

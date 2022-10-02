@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nik300.InterpretLayer", "Nik300.InterpretLayer\Nik300.InterpretLayer.csproj", "{81A4FC39-C09A-44B7-AFE9-1A05DC749850}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nik300.InterpretLayer", "Nik300.InterpretLayer\Nik300.InterpretLayer.csproj", "{81A4FC39-C09A-44B7-AFE9-1A05DC749850}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestOS", "TestOS\TestOS.csproj", "{0F457590-91BD-406E-A6D4-4942D043BC9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestOS", "TestOS\TestOS.csproj", "{0F457590-91BD-406E-A6D4-4942D043BC9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEnv", "TestEnv\TestEnv.csproj", "{BF991C6F-A603-4567-B9D4-EC087658B2F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestEnv", "TestEnv\TestEnv.csproj", "{BF991C6F-A603-4567-B9D4-EC087658B2F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cosmos.System.Collections", "Cosmos.System.Collections.TDictionary\Cosmos.System.Collections.csproj", "{35E136AA-44D1-4171-9436-708B59BC19E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{BF991C6F-A603-4567-B9D4-EC087658B2F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF991C6F-A603-4567-B9D4-EC087658B2F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF991C6F-A603-4567-B9D4-EC087658B2F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35E136AA-44D1-4171-9436-708B59BC19E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35E136AA-44D1-4171-9436-708B59BC19E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35E136AA-44D1-4171-9436-708B59BC19E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35E136AA-44D1-4171-9436-708B59BC19E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

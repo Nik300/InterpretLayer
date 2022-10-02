@@ -1,4 +1,5 @@
-﻿using Nik300.InterpretLayer.Types.Builders;
+﻿using Nik300.InterpretLayer.Runtime.Libraries;
+using Nik300.InterpretLayer.Types.Builders;
 using Nik300.InterpretLayer.Types.Runtime;
 using Nik300.InterpretLayer.Types.Statements;
 using System;
@@ -29,6 +30,8 @@ namespace Nik300.InterpretLayer.Types
                 { Name, new() }
             };
             Contexts[Name].UseName(Name);
+            var syslib = SystemLib.Instance.Import();
+            Contexts[syslib.Name] = syslib;
         }
 
         public Variable GetVariable(string context, string varname, Context current)
@@ -38,7 +41,7 @@ namespace Nik300.InterpretLayer.Types
                 (!current.Name.StartsWith(Contexts[context].Name) && Contexts[context].Variables[varname].Modifiers.Contains(Modifier.Local)) ||
                 (current.Imported && !current.Variables[varname].Modifiers.Contains(Modifier.Export))
                 ) return null;
-            return current.Variables[varname];
+            return Contexts[context].Variables[varname];
         }
         public Context GetRoot()
         {

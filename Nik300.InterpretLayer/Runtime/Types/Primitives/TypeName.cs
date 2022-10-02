@@ -71,12 +71,12 @@ namespace Nik300.InterpretLayer.Runtime.Types
                 return TypeContext.Variables.Count > 0;
             }
 
-            public override Element Call(Context current, Document document, Element element, Element @this = null, Dictionary<string, Variable> args = null)
+            public override Element Call(Context current, Document document, Element element, Element @this = null, Element[] args = null, (string name, Element element)[] kargs = null)
             {
                 if (!Callable()) return null;
                 Element e = TypeContext.Variables["[call]"].Value;
                 runtime.Type t = e.Type;
-                return t.Call(current, document, e, @this, args);
+                return t.Call(current, document, e, @this, args, kargs);
             }
             public override Element Get(Context current, Element @this, string childName)
             {

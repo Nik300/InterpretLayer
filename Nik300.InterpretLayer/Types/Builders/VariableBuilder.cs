@@ -1,46 +1,35 @@
-﻿using Nik300.InterpretLayer.Types.Builders;
+﻿using Nik300.InterpretLayer.Types.Runtime;
+using runtime = Nik300.InterpretLayer.Types.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Nik300.InterpretLayer.Runtime.Types;
 
-namespace Nik300.InterpretLayer.Types.Runtime
+namespace Nik300.InterpretLayer.Types.Builders
 {
-    public sealed class Variable
+    public sealed class VariableBuilder
     {
-        public Type Type { get; internal set; }
-        public Element Value { get; internal set; }
-        public Modifier[] Modifiers { get; internal set; }
+        public Element Value { get; private set; } = null;
+        public runtime.Type Type { get; private set; } = null;
+        public Modifier[] Modifiers { get; private set; } = Array.Empty<Modifier>();
 
-        public static VariableBuilder Builder { get { return new(); } }
+        internal VariableBuilder() { }
 
-        internal Variable()
+        public VariableBuilder UseValue(Element element)
         {
-            Modifiers = Array.Empty<Modifier>();
+            if (Value != null) return this;
+            Value = element;
+            return this;
         }
-
-        private bool ContainsModifier(Modifier mod)
-        {
-            for (int i = 0; i < Modifiers.Length; i++)
-                if (Modifiers[i] == mod) return true;
-            return false;
-        }
-
-        public bool UpdateValue(Element value)
-        {
-            if (!value.Type.Compare(Type) || ContainsModifier(Modifier.Constant) || ContainsModifier(Modifier.Readonly)) return false;
-            Value = value;
-            return true;
-        }
-
-        public Variable UseType(Type type)
+        public VariableBuilder UseType(runtime.Type type)
         {
             if (Type != null) return this;
             Type = type;
             return this;
         }
-        public Variable AddModifier(Modifier modifier)
+        public VariableBuilder AddModifier(Modifier modifier)
         {
             Modifier[] temp = new Modifier[Modifiers.Length + 1];
             for (int i = 0; i < Modifiers.Length; i++)
@@ -52,7 +41,7 @@ namespace Nik300.InterpretLayer.Types.Runtime
             Modifiers = temp;
             return this;
         }
-        public Variable RemModifier(Modifier modifier)
+        public VariableBuilder RemModifier(Modifier modifier)
         {
             Modifier[] temp = new Modifier[Modifiers.Length - 1];
             for (int i = 0, s = 0; i < Modifiers.Length && s < temp.Length; i++, s++)
@@ -67,5 +56,6 @@ namespace Nik300.InterpretLayer.Types.Runtime
             Modifiers = temp;
             return this;
         }
+        public Variable Build() => new() { Value = Value ?? Primitives.Anything.Null, Type = Type ?? Primitives.Anything.Instance };
     }
 }

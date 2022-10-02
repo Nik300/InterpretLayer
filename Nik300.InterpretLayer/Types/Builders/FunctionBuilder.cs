@@ -11,14 +11,16 @@ namespace Nik300.InterpretLayer.Types.Builders
 {
     public sealed class FunctionBuilder
     {
-        Dictionary<string, Variable> Parameters { get; } = new();
+        (string name, Variable variable)[] Parameters { get; set; } = Array.Empty<(string, Variable)>();
         Statement[] Statements { get; set; } = Array.Empty<Statement>();
         runtime.Type ReturnType { get; set; }
+        Function.BuiltInFunction BuiltIn { get; set; }
 
         internal FunctionBuilder() { }
 
         public FunctionBuilder UseStatement(Statement statement)
         {
+            if (BuiltIn != null) return this;
             Statement[] temp = new Statement[Statements.Length + 1];
             for (int i = 0; i < Statements.Length; i++)
             {
@@ -30,17 +32,33 @@ namespace Nik300.InterpretLayer.Types.Builders
         }
         public FunctionBuilder UseParameter(string name, Variable param)
         {
-            if (Parameters.ContainsKey(name)) return this;
-            Parameters.Add(name, param);
+            (string name, Variable variable)[] temp = new (string name, Variable variable)[Parameters.Length + 1];
+            for (int i = 0; i < Parameters.Length; i++)
+            {
+                if (Parameters[i].name == name) return this;
+                temp[i] = Parameters[i];
+            }
+            Parameters = temp;
+            Parameters[^1] = (name, param);
             return this;
         }
         public FunctionBuilder DiscardParameter(string name)
         {
-            if (!Parameters.ContainsKey(name)) return this;
-            Parameters.Remove(name);
+            (string name, Variable variable)[] temp = new (string name, Variable variable)[Parameters.Length - 1];
+            for (int i = 0, s = 0; i < Parameters.Length && s < temp.Length; i++, s++)
+            {
+                if (Parameters[i].name == name) s--;
+                else temp[i] = Parameters[i];
+            }
+            Parameters = temp;
+            return this;
+        }
+        public FunctionBuilder UseCallback(Function.BuiltInFunction callback)
+        {
+            BuiltIn = callback;
             return this;
         }
 
-        public Function Build() => new() { Parameters = Parameters, ReturnType = ReturnType, Statements = Statements };
+        public Function Build() => new() { Parameters = Parameters, ReturnType = ReturnType, Statements = Statements, BuiltIn = BuiltIn };
     }
 }

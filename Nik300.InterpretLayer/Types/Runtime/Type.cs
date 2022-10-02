@@ -29,7 +29,7 @@ namespace Nik300.InterpretLayer.Types.Runtime
         }
 
         public abstract bool Compare(Type other);
-        public virtual Element Call(Context current, Document document, Element element, Element @this = null, Dictionary<string, Variable> args = null) { return null; }
+        public virtual Element Call(Context current, Document document, Element element, Element @this = null, Element[] args = null, (string name, Element element)[] kargs = null) { return null; }
 
         public virtual Element Get(Context current, Element @this, string childName) => null;
         public virtual void Set(Context current, Element @this, string childName, Element value) { }

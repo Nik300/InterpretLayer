@@ -1,4 +1,5 @@
-﻿using Nik300.InterpretLayer.Runtime.Types;
+﻿using Nik300.InterpretLayer.Runtime.Interop;
+using Nik300.InterpretLayer.Runtime.Types;
 using Nik300.InterpretLayer.Types.Runtime;
 using System;
 using System.Collections.Generic;
@@ -16,20 +17,32 @@ namespace Nik300.InterpretLayer.Types.Statements.Definition
 
         private string VarName { get; }
         private runtime.Type VarType { get; }
-        private object VarElement { get; }
+        private Element VarElement { get; }
         private Modifier[] VarModifiers { get; }
+        private Reference VarReference { get; }
 
         protected override Context ExecuteStatement(Context currentContext, Document document)
         {
-            return currentContext.AddVariable(VarName, new() { Type = VarType, Value = Element.Builder.UseType(VarType).UseObject(VarElement).Build(), Modifiers = VarModifiers });
+            Variable v = new() { Type = VarType, Value = VarElement, Modifiers = VarModifiers };
+            VarReference.Ref = v;
+            return currentContext.AddVariable(VarName, v);
         }
 
-        public VariableDef(string name, runtime.Type type = null, object element = null, Modifier[] modifiers = null)
+        public VariableDef(string name, out Reference reference, runtime.Type type = null, Element element = null, Modifier[] modifiers = null)
         {
             VarName = name;
             VarType = type ?? Primitives.Anything.Instance;
-            VarElement = element;
-            VarModifiers = modifiers;
+            VarElement = element ?? Primitives.Anything.Null;
+            VarModifiers = modifiers ?? Array.Empty<Modifier>();
+            reference = VarReference = new();
+        }
+        public VariableDef(string name, runtime.Type type = null, Element element = null, Modifier[] modifiers = null)
+        {
+            VarName = name;
+            VarType = type ?? Primitives.Anything.Instance;
+            VarElement = element ?? Primitives.Anything.Null;
+            VarModifiers = modifiers ?? Array.Empty<Modifier>();
+            VarReference = new();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Nik300.InterpretLayer.Types.Runtime
     {
         private Context Parent { get; }
         internal string Name { get; set; }
-        internal Dictionary<string, Variable> Variables { get; private set; }
+        internal Dictionary<string, Variable> Variables { get; set; }
         public bool Imported { get; internal set; } = false;
         public string FullName
         {
@@ -38,7 +38,7 @@ namespace Nik300.InterpretLayer.Types.Runtime
         }
         public Context AddVariable(string name, Variable var)
         {
-            if (Variables.ContainsKey(name)) return this;
+            if (Variables.ContainsKey(name)) Variables[name] = var;
             Variables.Add(name, var);
             return this;
         }
@@ -52,6 +52,11 @@ namespace Nik300.InterpretLayer.Types.Runtime
         {
             Imported = !Imported;
             return this;
+        }
+        public Variable GetVariable(string name)
+        {
+            if (!Variables.ContainsKey(name)) return null;
+            return Variables[name];
         }
     }
 }
