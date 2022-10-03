@@ -13,8 +13,8 @@ Please contact me if you're intrested in becoming a contributor to the project, 
 
 ## Roadmap
 <b>InterpretLayer roadmap</b>:<br/>
-  • <i>preliminary works</i> (values, variables, functions, ...) ✅<br/>
-  • <b>Types declaration</b> (class, struct, ...)<br/>
+&nbsp;&nbsp;• <i>preliminary works</i> (values, variables, functions, ...) ✅<br/>
+&nbsp;&nbsp;• <b>Types declaration</b> (class, struct, ...)<br/>
   • <i>System</i> library <br/>
         • basic <b>IO</b> functions<br/>
         • primitive <i>types</i><br/>
