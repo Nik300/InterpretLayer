@@ -10,3 +10,24 @@ I hope to implement some basic staff asap for you to enjoy CosmosOS at its full 
 ## Contribution
 Any form of help is welcome, just pull request with details and i'll be more than happy to review the request and merge it as soon as possible! <br/><br/>
 Please contact me if you're intrested in becoming a contributor to the project, I might need some help ;)
+
+## Roadmap
+<b>InterpretLayer roadmap</b>:<br/>
+  • <i>preliminary works</i> (values, variables, functions, ...) ✅<br/>
+  • <b>Types declaration</b> (class, struct, ...)<br/>
+  • <i>System</i> library <br/>
+        • basic <b>IO</b> functions<br/>
+        • primitive <i>types</i><br/>
+            • <b>string</b> ✅<br/>
+            • <b>anything</b> ✅<br/>
+            • <b>method</b> ✅<br/>
+            • <b>integer</b><br/>
+            • <b>boolean</b><br/>
+            • <b>double</b>/<b>float</b><br/>
+            • <b>array</b><br/>
+            • <b>dictionary</b><br/>
+            • <b>list</b><br/>
+        • interop between Cosmos and the document engine<br/>
+  • basic <i>TypeScript</i> support<br/>
+  • Official release on nuget<br/>
+  • <i>HTML</i> support<br/>
