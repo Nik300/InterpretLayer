@@ -38,8 +38,8 @@ namespace Nik300.InterpretLayer.Types
         {
             if (
                 !Contexts.ContainsKey(context) || !Contexts[context].Variables.ContainsKey(varname) ||
-                (!current.Name.StartsWith(Contexts[context].Name) && Contexts[context].Variables[varname].Modifiers.Contains(Modifier.Local)) ||
-                (current.Imported && !current.Variables[varname].Modifiers.Contains(Modifier.Export))
+                (!current.Name.StartsWith(Contexts[context].Name) && Contexts[context].Variables[varname].ContainsModifier(Modifier.Local)) ||
+                (current.Imported && !current.Variables[varname].ContainsModifier(Modifier.Export))
                 ) return null;
             return Contexts[context].Variables[varname];
         }

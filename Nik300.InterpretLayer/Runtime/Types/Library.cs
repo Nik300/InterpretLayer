@@ -11,10 +11,15 @@ namespace Nik300.InterpretLayer.Runtime.Types
     {
         public abstract string Name { get; }
         protected Context Lib { get; private set; } = new();
+        private bool Built { get; set; } = false;
 
         public Context Import()
         {
-            if (Lib.Name != null) return null;
+            if (Lib.Name != null && !Built) return null;
+            if (Built) return Lib;
+
+            Built = true;
+
             return
                 Lib.UseName(Name)
                    .ToggleImported();

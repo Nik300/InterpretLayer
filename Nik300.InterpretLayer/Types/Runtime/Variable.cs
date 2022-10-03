@@ -20,7 +20,7 @@ namespace Nik300.InterpretLayer.Types.Runtime
             Modifiers = Array.Empty<Modifier>();
         }
 
-        private bool ContainsModifier(Modifier mod)
+        internal bool ContainsModifier(Modifier mod)
         {
             for (int i = 0; i < Modifiers.Length; i++)
                 if (Modifiers[i] == mod) return true;

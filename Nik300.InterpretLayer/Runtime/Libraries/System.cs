@@ -28,14 +28,21 @@ namespace Nik300.InterpretLayer.Runtime.Libraries
                                         "string",
                                         Variable.Builder
                                             .UseType(Primitives.String.Instance)
+                                            .UseValue(
+                                                Element.Builder
+                                                    .UseType(Primitives.String.Instance)
+                                                    .UseObject("Hello World")
+                                                    .Build()
+                                            )
                                             .Build()
-                                        )
+                                    )
                                     .UseCallback(
                                         (c, d) =>
                                         {
                                             Console.Write(c.Variables["string"].Value.Object);
                                             return Primitives.Anything.Null;
-                                        })
+                                        }
+                                    )
                                     .Build()
                     },
                     Modifiers = new Modifier[] { Modifier.Export }
@@ -53,6 +60,12 @@ namespace Nik300.InterpretLayer.Runtime.Libraries
                                         "string",
                                         Variable.Builder
                                             .UseType(Primitives.String.Instance)
+                                            .UseValue(
+                                                Element.Builder
+                                                    .UseType(Primitives.String.Instance)
+                                                    .UseObject("Hello World")
+                                                    .Build()
+                                            )
                                             .Build()
                                         )
                                     .UseCallback(
