@@ -5,28 +5,62 @@ This is basically the interpreter of an abstract language, designed to be flexib
 
 ## Roadmap
 <b>InterpretLayer roadmap</b>:<br/>
-&nbsp;&nbsp;• <i>preliminary works</i> (values, variables, functions, ...) ✅<br/>
-&nbsp;&nbsp;• <b>Types declaration</b> (class, struct, ...)<br/>
-&nbsp;&nbsp;• <i>System</i> library <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• basic <b>IO</b> functions<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• primitive <i>types</i><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>string</b> ✅<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>anything</b> ✅<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>method</b> ✅<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>integer</b><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>boolean</b><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>double</b>/<b>float</b><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>array</b><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>dictionary</b><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>list</b><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• interop between Cosmos and the document engine<br/>
-&nbsp;&nbsp;• basic <i>TypeScript</i> support<br/>
-&nbsp;&nbsp;• Official release on nuget<br/>
-&nbsp;&nbsp;• <i>HTML</i> support<br/>
+&emsp;• <i>preliminary works</i> (values, variables, functions, ...) ✅<br/>
+&emsp;• <b>Types declaration</b> (class, struct, ...)<br/>
+&emsp;• <i>System</i> library <br/>
+&emsp;&emsp;• basic <b>IO</b> functions<br/>
+&emsp;&emsp;• primitive <i>types</i><br/>
+&emsp;&emsp;&emsp;• <b>string</b> ✅<br/>
+&emsp;&emsp;&emsp;• <b>anything</b> ✅<br/>
+&emsp;&emsp;&emsp;• <b>method</b> ✅<br/>
+&emsp;&emsp;&emsp;• <b>integer</b><br/>
+&emsp;&emsp;&emsp;• <b>boolean</b><br/>
+&emsp;&emsp;&emsp;• <b>double</b>/<b>float</b><br/>
+&emsp;&emsp;&emsp;• <b>array</b><br/>
+&emsp;&emsp;&emsp;• <b>dictionary</b><br/>
+&emsp;&emsp;&emsp; <b>list</b><br/>
+&emsp;&emsp;• interop between Cosmos and the document engine<br/>
+&emsp;• basic <i>TypeScript</i> support<br/>
+&emsp;• Official release on nuget<br/>
+&emsp;• <i>HTML</i> support<br/>
 
 ## How to use
-That being said, the interpreter is in a very early stage and doesn't support anything, but a debug statement you can try yourself (check out the code in TestOS/Kernel.cs). <br/>
-I hope to implement some basic staff asap for you to enjoy CosmosOS at its full potential with external libraries and executables. <br/>
+The interpreter is at a very early stage, but it already supports some basic statements, and even has two print functions ([ioprintln] and [ioprint]).<br/>
+The function names are enclosed into brackets to clearly specify that those are internal functions and those names should be replaced with whatever the language is supposed to have.<br/>
+Let's, for instance, have a very common test script executing:
+```C#
+using Nik300.InterpretLayer.Types;
+using Nik300.InterpretLayer.Types.Builders;
+using Nik300.InterpretLayer.Types.Runtime;
+using Nik300.InterpretLayer.Types.Statements.General;
+using Nik300.InterpretLayer.Runtime.Types;
+
+// your class definition here
+
+// let's define the document here
+var doc = Document.Builder
+                .UseName("helloWorld") // this will be used by other documents to reference to exported types
+                .UseStatement(  // UseStatement simply adds a new statement to the current document
+                    new FunctionCall( // This statement is pretty self explainatory, it's used to call a function
+                        "sys",  // this is the library, or context, where to look for the function
+                        "[ioprintln]",  // and this is the actual function name
+                        args: new Element[] // list of arguments
+                        {
+                            Element.Builder
+                                .UseType(Primitives.String.Instance) // type of the element
+                                .UseObject("Hello World!") // element's object
+                                .Build()
+                        }
+                    )
+                )
+                .Build(); // here we build our defined document into an actual document
+
+var context = doc.GetRoot(); // this is needed to have the document's root to execute
+while ((context = doc.RunNext(context)) != null) ; // and here we execute the document until no other statement is left
+```
+As you can see I've payed particular attention to details and tried to make this library as easy to use as possible.<br/>
+This is chiefly because this library is for those of you who want to create languages compatible with cosmos os, and thus need some help with the runtime.<br/>
+If you're curious and wanna look for other statements, please have a look at TestOS/Tests.
 
 ## Contribution
 Any form of help is welcome, just pull request with details and i'll be more than happy to review the request and merge it as soon as possible! <br/><br/>
