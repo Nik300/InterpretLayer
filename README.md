@@ -15,19 +15,19 @@ Please contact me if you're intrested in becoming a contributor to the project, 
 <b>InterpretLayer roadmap</b>:<br/>
 &nbsp;&nbsp;• <i>preliminary works</i> (values, variables, functions, ...) ✅<br/>
 &nbsp;&nbsp;• <b>Types declaration</b> (class, struct, ...)<br/>
-  • <i>System</i> library <br/>
-        • basic <b>IO</b> functions<br/>
-        • primitive <i>types</i><br/>
-            • <b>string</b> ✅<br/>
-            • <b>anything</b> ✅<br/>
-            • <b>method</b> ✅<br/>
-            • <b>integer</b><br/>
-            • <b>boolean</b><br/>
-            • <b>double</b>/<b>float</b><br/>
-            • <b>array</b><br/>
-            • <b>dictionary</b><br/>
-            • <b>list</b><br/>
-        • interop between Cosmos and the document engine<br/>
-  • basic <i>TypeScript</i> support<br/>
-  • Official release on nuget<br/>
-  • <i>HTML</i> support<br/>
+&nbsp;&nbsp;• <i>System</i> library <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• basic <b>IO</b> functions<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• primitive <i>types</i><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>string</b> ✅<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>anything</b> ✅<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>method</b> ✅<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>integer</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>boolean</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>double</b>/<b>float</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>array</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>dictionary</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• <b>list</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• interop between Cosmos and the document engine<br/>
+&nbsp;&nbsp;• basic <i>TypeScript</i> support<br/>
+&nbsp;&nbsp;• Official release on nuget<br/>
+&nbsp;&nbsp;• <i>HTML</i> support<br/>
