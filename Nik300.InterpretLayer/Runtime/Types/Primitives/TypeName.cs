@@ -76,7 +76,7 @@ namespace Nik300.InterpretLayer.Runtime.Types
                 if (!Callable()) return null;
                 Element e = TypeContext.Variables["[call]"].Value;
                 runtime.Type t = e.Type;
-                return t.Call(current, document, e, @this, args, kargs);
+                return t.Call(current, document, e, element, args, kargs);
             }
             public override Element Get(Context current, Element @this, string childName)
             {

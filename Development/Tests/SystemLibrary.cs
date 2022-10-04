@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestOS.Tests
+namespace Development.Tests
 {
-    internal class SystemLibrary: Test
+    public class SystemLibrary: Test
     {
         public override DocumentBuilder Script { get; } =
             Document.Builder
@@ -19,7 +19,7 @@ namespace TestOS.Tests
                 .UseStatement(
                     new FunctionCall(
                         "sys", "[ioprintln]",
-                        kparams: new (string, Element)[]
+                        kwargs: new (string, Element)[]
                         {
                             (
                                 "string",

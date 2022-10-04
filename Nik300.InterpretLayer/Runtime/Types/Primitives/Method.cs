@@ -35,7 +35,7 @@ namespace Nik300.InterpretLayer.Runtime.Types
                 {
                     if (!Callable()) return null;
                     Function f = (Function)element.Object;
-                    Context c = new() { Name = "function.context", Variables = new() };
+                    Context c = new(current) { Name = "function.context", Variables = new() };
                     if (@this != null) c.AddVariable("this", new Variable { Modifiers = new Modifier[] { Modifier.Readonly }, Type = @this.Type, Value = @this });
 
                     if (args != null)

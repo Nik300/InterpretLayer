@@ -10,6 +10,8 @@ using runtime = Nik300.InterpretLayer.Types.Runtime;
 using Nik300.InterpretLayer.Types.Runtime;
 using Nik300.InterpretLayer.Runtime.Interop;
 using Nik300.InterpretLayer.Types.Statements.Manipulation;
+using Development;
+using Development.Tests;
 
 namespace TestOS
 {
@@ -26,9 +28,9 @@ namespace TestOS
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Starting tests...\n");
 
-            Tester.RunTest(new Tests.VariableDeclaration());
-            Tester.RunTest(new Tests.FunctionDeclaration());
-            Tester.RunTest(new Tests.SystemLibrary());
+            Tester.RunTest(new VariableDeclaration());
+            Tester.RunTest(new FunctionDeclaration());
+            Tester.RunTest(new SystemLibrary());
 
             while (true) ;
         }

@@ -6,8 +6,8 @@ using Nik300.InterpretLayer.Types.Runtime;
 using System;
 using Nik300.InterpretLayer.Runtime.Interop;
 using Nik300.InterpretLayer.Types.Statements.Manipulation;
-using TestOS;
-using TestOS.Tests;
+using Development;
+using Development.Tests;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace TestEnv

@@ -6,14 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestOS
+namespace Development
 {
-    internal abstract class Test
+    public abstract class Test
     {
         public abstract DocumentBuilder Script { get; }
         public abstract string Name { get; }
+        internal Test() { }
     }
-    internal static class Tester
+    public static class Tester
     {
         public static void RunTest(Test test)
         {
@@ -26,8 +27,6 @@ namespace TestOS
             var doc = test.Script.Build();
             var context = doc.GetRoot();
             while ((context = doc.RunNext(context)) != null) ;
-
-            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

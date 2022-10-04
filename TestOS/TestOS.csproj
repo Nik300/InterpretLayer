@@ -26,6 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Development\Development.csproj" />
       <ProjectReference Include="..\Nik300.InterpretLayer\Nik300.InterpretLayer.csproj" />
     </ItemGroup>
 

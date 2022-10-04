@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 using Nik300.InterpretLayer.Types.Statements.Definition;
 using Nik300.InterpretLayer.Runtime.Interop;
 
-namespace TestOS.Tests
+namespace Development.Tests
 {
-    internal class VariableDeclaration: Test
+    public class VariableDeclaration: Test
     {
         public override DocumentBuilder Script { get; } =
             Document.Builder
