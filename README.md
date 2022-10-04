@@ -60,7 +60,7 @@ while ((context = doc.RunNext(context)) != null) ; // and here we execute the do
 ```
 As you can see I've payed particular attention to details and tried to make this library as easy to use as possible.<br/>
 This is chiefly because this library is for those of you who want to create languages compatible with cosmos os, and thus need some help with the runtime.<br/>
-If you're curious and wanna look for other statements, please have a look at TestOS/Tests.
+If you're curious and wanna look for other statements, please have a look at Development/Tests.
 
 ## Contribution
 Any form of help is welcome, just pull request with details and i'll be more than happy to review the request and merge it as soon as possible! <br/><br/>
