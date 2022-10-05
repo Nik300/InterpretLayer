@@ -6,13 +6,14 @@ This is basically the interpreter of an abstract language, designed to be flexib
 ## Roadmap
 <b>InterpretLayer roadmap</b>:<br/>
 &emsp;• <i>preliminary works</i> (values, variables, functions, ...) ✅<br/>
-&emsp;• <b>Types declaration</b> (class, struct, ...)<br/>
+&emsp;• <b>Types declaration</b> (class, struct, ...) ✅<br/>
 &emsp;• <i>System</i> library <br/>
 &emsp;&emsp;• basic <b>IO</b> functions<br/>
 &emsp;&emsp;• primitive <i>types</i><br/>
 &emsp;&emsp;&emsp;• <b>string</b> ✅<br/>
 &emsp;&emsp;&emsp;• <b>anything</b> ✅<br/>
 &emsp;&emsp;&emsp;• <b>method</b> ✅<br/>
+&emsp;&emsp;&emsp;• <b>typeInfo</b> ✅<br/>
 &emsp;&emsp;&emsp;• <b>integer</b><br/>
 &emsp;&emsp;&emsp;• <b>boolean</b><br/>
 &emsp;&emsp;&emsp;• <b>double</b>/<b>float</b><br/>
@@ -20,6 +21,7 @@ This is basically the interpreter of an abstract language, designed to be flexib
 &emsp;&emsp;&emsp;• <b>dictionary</b><br/>
 &emsp;&emsp;&emsp; <b>list</b><br/>
 &emsp;&emsp;• interop between Cosmos and the document engine<br/>
+&emsp;• <i>JSON</i> support<br/>
 &emsp;• basic <i>TypeScript</i> support<br/>
 &emsp;• Official release on nuget<br/>
 &emsp;• <i>HTML</i> support<br/>

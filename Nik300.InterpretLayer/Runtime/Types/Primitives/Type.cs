@@ -25,7 +25,7 @@ namespace Nik300.InterpretLayer.Runtime.Types
 
             public override bool Compare(runtime.Type other)
             {
-                return other.FullName == FullName || other.FullName == "sys.any";
+                return other.FullName == FullName || other.FullName == "sys.anything";
             }
 
             public override bool Contains(string childName) => false;

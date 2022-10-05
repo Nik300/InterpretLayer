@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Types\Statements\Keywords\" />
     <Folder Include="Types\Statements\Math\" />
     <Folder Include="Types\Statements\Value\" />
   </ItemGroup>

@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestOS", "TestOS\TestOS.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestEnv", "TestEnv\TestEnv.csproj", "{BF991C6F-A603-4567-B9D4-EC087658B2F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Development", "Development\Development.csproj", "{7921DBE8-FBFD-41D2-9822-93E83C897377}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Development", "Development\Development.csproj", "{7921DBE8-FBFD-41D2-9822-93E83C897377}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementi di soluzione", "Elementi di soluzione", "{8E388F81-3F72-4FDD-9276-239A8D3E5459}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

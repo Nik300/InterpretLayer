@@ -19,8 +19,9 @@ namespace Nik300.InterpretLayer.Runtime.Types
             public override Context DefinitionContext { get; }
             public Document DefinitionDocument { get; }
             public Context TypeContext { get; }
+            public Function OCTOR { get; }
 
-            public TypeName(Document doc, string name, Context definitionContext, Context typeContext = null)
+            public TypeName(Document doc, string name, Context definitionContext, Function OCTOR = null, Context typeContext = null)
             {
                 if (typeContext?.Name != null) throw new Exception("given context is already defined");
                 Name = name;
@@ -28,7 +29,8 @@ namespace Nik300.InterpretLayer.Runtime.Types
                 DefinitionDocument = doc;
                 TypeContext = typeContext ?? new();
                 TypeContext.UseName(FullName);
-                doc.Contexts.Add(TypeContext.Name, TypeContext);
+                doc.Contexts.Add(TypeContext.FullName, TypeContext);
+                this.OCTOR = OCTOR;
             }
 
             public override bool Callable()
@@ -57,7 +59,7 @@ namespace Nik300.InterpretLayer.Runtime.Types
                             TypeContext.Variables["[typeEqu]"].Modifiers.Contains(Modifier.Operator);
                 return 
                     other.FullName == FullName ||
-                    other.FullName == "sys.any" ||
+                    other.FullName == "sys.anything" ||
                     (comp && ((bool)((Function)TypeContext.Variables["[typeEqu]"].Value.Object).Run(new Context(TypeContext).AddVariable("type", new() { Type = String.Instance, Modifiers = new Modifier[] { Modifier.Local, Modifier.Readonly }, Value = new() { Type = String.Instance, Object = other.FullName } }), DefinitionDocument).Object));
             }
 
@@ -80,18 +82,54 @@ namespace Nik300.InterpretLayer.Runtime.Types
             }
             public override Element Get(Context current, Element @this, string childName)
             {
-                if (!Scriptable() || !((Context)@this.Object).Variables.ContainsKey(childName)) return null;
-                return ((Context)@this.Object).Variables[childName].Value;
+                Variable v;
+                if (@this is not null)
+                {
+                    if (!Scriptable() || !((Context)@this.Object).Variables.ContainsKey(childName)) return null;
+                    v = ((Context)@this.Object).Variables[childName];
+                }
+                else
+                {
+                    if (!TypeContext.Variables.ContainsKey(childName)) return null;
+                    v = TypeContext.Variables[childName];
+                }
+                if (!v.ContainsModifier(Modifier.Local) && !current.FullName.StartsWith(FullName)) throw new Exception($"{childName} is not accessible from this context");
+                return v.Value;
             }
             public override void Set(Context current, Element @this, string childName, Element value)
             {
-                if (!Scriptable() || !((Context)@this.Object).Variables.ContainsKey(childName) || !((Context)@this.Object).Variables[childName].Type.Compare(value.Type)) return;
-                ((Context)@this.Object).Variables[childName].Value = value;
+                Variable v;
+                if (@this is not null)
+                {
+                    if (!Scriptable() || !((Context)@this.Object).Variables.ContainsKey(childName) || !((Context)@this.Object).Variables[childName].Type.Compare(value.Type)) return;
+                    v = ((Context)@this.Object).Variables[childName];
+                }
+                else
+                {
+                    if (!TypeContext.Variables.ContainsKey(childName)) return;
+                    v = TypeContext.Variables[childName];
+                }
+                if (!v.ContainsModifier(Modifier.Local) && !current.FullName.StartsWith(FullName)) throw new Exception($"{childName} is not accessible from this context");
+                v.UpdateValue(value);
             }
             public override void Create(Context current, Element @this, string childName, Variable var)
             {
                 if (current.FullName != TypeContext.FullName || ((Context)@this.Object).Variables.ContainsKey(childName)) return;
                 ((Context)@this.Object).Variables.Add(childName, var);
+            }
+            public override Element New(Context current, Document document, Element[] args = null, (string, Element)[] kwargs = null)
+            {
+                Context instance = new Context(TypeContext).UseName("instance");
+                Element result = Element.Builder.UseType(this).UseObject(instance).Build();
+                if (OCTOR != null) OCTOR.Run(instance, document);
+                if (TypeContext.Variables.ContainsKey("[ctor]"))
+                {
+                    Variable ctor = TypeContext.Variables["[ctor]"];
+                    if (ctor.ContainsModifier(Modifier.Local) && !current.Name.StartsWith(TypeContext.Name))
+                        throw new Exception("inaccessible constructor");
+                    ctor.Type.Call(current, document, ctor.Value, result, args, kwargs);
+                }
+                return result;
             }
         }
     }

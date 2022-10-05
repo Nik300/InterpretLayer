@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nik300.InterpretLayer.Runtime.Types;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,5 +35,6 @@ namespace Nik300.InterpretLayer.Types.Runtime
         public virtual Element Get(Context current, Element @this, string childName) => null;
         public virtual void Set(Context current, Element @this, string childName, Element value) { }
         public virtual void Create(Context current, Element @this, string childName, Variable var) { }
+        public virtual Element New(Context current, Document document, Element[] args = null, (string, Element)[] kwargs = null) => Primitives.Anything.Null;
     }
 }

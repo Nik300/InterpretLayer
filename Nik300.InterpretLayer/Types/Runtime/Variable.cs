@@ -1,4 +1,5 @@
-﻿using Nik300.InterpretLayer.Types.Builders;
+﻿using Nik300.InterpretLayer.Runtime.Types;
+using Nik300.InterpretLayer.Types.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace Nik300.InterpretLayer.Types.Runtime
 
         public bool UpdateValue(Element value)
         {
+            Type ??= Primitives.Anything.Instance;
             if (!value.Type.Compare(Type) || ContainsModifier(Modifier.Constant) || ContainsModifier(Modifier.Readonly)) return false;
             Value = value;
             return true;

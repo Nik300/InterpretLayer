@@ -30,6 +30,7 @@ namespace TestOS
 
             Tester.RunTest(new VariableDeclaration());
             Tester.RunTest(new FunctionDeclaration());
+            Tester.RunTest(new TypeDeclaration());
             Tester.RunTest(new SystemLibrary());
 
             while (true) ;

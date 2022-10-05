@@ -31,7 +31,7 @@ namespace Nik300.InterpretLayer.Types
             };
             Contexts[Name].UseName(Name);
             var syslib = SystemLib.Instance.Import();
-            Contexts[syslib.Name] = syslib;
+            Contexts.Add(syslib.FullName, syslib);
         }
 
         public Variable GetVariable(string context, string varname, Context current)

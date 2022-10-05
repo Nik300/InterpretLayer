@@ -29,6 +29,11 @@ namespace Nik300.InterpretLayer.Types.Builders
             Type = type;
             return this;
         }
+        public VariableBuilder UseModifiers(Modifier[] modifiers)
+        {
+            Modifiers = modifiers ?? Array.Empty<Modifier>();
+            return this;
+        }
         public VariableBuilder AddModifier(Modifier modifier)
         {
             Modifier[] temp = new Modifier[Modifiers.Length + 1];
