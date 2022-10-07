@@ -7,8 +7,8 @@ This is basically the interpreter of an abstract language, designed to be flexib
 <b>InterpretLayer roadmap</b>:<br/>
 &emsp;• <i>preliminary works</i> (values, variables, functions, ...) ✅<br/>
 &emsp;• <b>Types declaration</b> (class, struct, ...) ✅<br/>
-&emsp;• <i>BASIC</i> support<br/> ⌚<br/>
-&emsp;• BASIC <b>playground</b><br/> ⌚<br/>
+&emsp;• <i>BASIC</i> support ⌚<br/>
+&emsp;• BASIC <b>playground</b> ⌚<br/>
 &emsp;• <b>Statements and cycles</b><br/>
 &emsp;&emsp;• <i>for</i> cycle<br/>
 &emsp;&emsp;• <i>while</i>/<i>do-while</i> cycles<br/>
