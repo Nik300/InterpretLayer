@@ -87,7 +87,6 @@ while ((context = doc.RunNext(context)) != null) ; // and here we execute the do
 ```
 A pseudo-code representation of this script would be something like this:
 ```C#
-using sys;
 sys.println("Hello World!");
 ```
 As you can see I've payed particular attention to details and tried to make this library as easy to use as possible.<br/>
