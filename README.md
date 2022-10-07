@@ -7,6 +7,29 @@ This is basically the interpreter of an abstract language, designed to be flexib
 <b>InterpretLayer roadmap</b>:<br/>
 &emsp;• <i>preliminary works</i> (values, variables, functions, ...) ✅<br/>
 &emsp;• <b>Types declaration</b> (class, struct, ...) ✅<br/>
+&emsp;• <i>BASIC</i> support<br/> ⌚<br/>
+&emsp;• BASIC <b>playground</b><br/> ⌚<br/>
+&emsp;• <b>Statements and cycles</b><br/>
+&emsp;&emsp;• <i>for</i> cycle<br/>
+&emsp;&emsp;• <i>while</i>/<i>do-while</i> cycles<br/>
+&emsp;&emsp;• <i>if</i>/<i>else if</i>/<i>else</i> statements<br/>
+&emsp;• <b>Conditions</b><br/>
+&emsp;&emsp;• <b>Equals</b> (==)<br/>
+&emsp;&emsp;• <b>Differs</b> (!=)<br/>
+&emsp;• <b>Operators</b><br/>
+&emsp;&emsp;• <b>basic</b><br/>
+&emsp;&emsp;&emsp;• <b>Add</b> (+)<br/>
+&emsp;&emsp;&emsp;• <b>Subtract</b> (-)<br/>
+&emsp;&emsp;&emsp;• <b>Divide</b> (/)<br/>
+&emsp;&emsp;&emsp;• <b>Multiply</b> (*)<br/>
+&emsp;&emsp;&emsp;• <b>Add</b> (+)<br/>
+&emsp;&emsp;• <b>bitwise</b><br/>
+&emsp;&emsp;&emsp;• <b>And</b> (&)<br/>
+&emsp;&emsp;&emsp;• <b>Or</b> (|)<br/>
+&emsp;&emsp;&emsp;• <b>Xor</b> (^)<br/>
+&emsp;&emsp;&emsp;• <b>Not</b> (~)<br/>
+&emsp;&emsp;&emsp;• <b>Lshift</b> (<<)<br/>
+&emsp;&emsp;&emsp;• <b>Rshift</b> (>>)<br/>
 &emsp;• <i>System</i> library <br/>
 &emsp;&emsp;• basic <b>IO</b> functions<br/>
 &emsp;&emsp;• primitive <i>types</i><br/>
@@ -19,7 +42,7 @@ This is basically the interpreter of an abstract language, designed to be flexib
 &emsp;&emsp;&emsp;• <b>double</b>/<b>float</b><br/>
 &emsp;&emsp;&emsp;• <b>array</b><br/>
 &emsp;&emsp;&emsp;• <b>dictionary</b><br/>
-&emsp;&emsp;&emsp; <b>list</b><br/>
+&emsp;&emsp;&emsp;• <b>list</b><br/>
 &emsp;&emsp;• interop between Cosmos and the document engine<br/>
 &emsp;• <i>JSON</i> support<br/>
 &emsp;• basic <i>TypeScript</i> support<br/>
@@ -59,6 +82,14 @@ var doc = Document.Builder
 
 var context = doc.GetRoot(); // this is needed to have the document's root to execute
 while ((context = doc.RunNext(context)) != null) ; // and here we execute the document until no other statement is left
+
+// output:
+// Hello World!
+```
+A pseudo-code representation of this script would be something like this:
+```C#
+using sys;
+sys.println("Hello World!");
 ```
 As you can see I've payed particular attention to details and tried to make this library as easy to use as possible.<br/>
 This is chiefly because this library is for those of you who want to create languages compatible with cosmos os, and thus need some help with the runtime.<br/>
