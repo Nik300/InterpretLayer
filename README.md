@@ -22,6 +22,7 @@ This is basically the interpreter of an abstract language, designed to be flexib
 &emsp;&emsp;&emsp;• <b>Subtract</b> (-)<br/>
 &emsp;&emsp;&emsp;• <b>Divide</b> (/)<br/>
 &emsp;&emsp;&emsp;• <b>Multiply</b> (*)<br/>
+&emsp;&emsp;&emsp;• <b>Modulo</b> (%)<br/>
 &emsp;&emsp;• <b>bitwise</b><br/>
 &emsp;&emsp;&emsp;• <b>And</b> (&)<br/>
 &emsp;&emsp;&emsp;• <b>Or</b> (|)<br/>

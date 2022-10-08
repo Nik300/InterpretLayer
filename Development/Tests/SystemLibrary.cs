@@ -18,7 +18,7 @@ namespace Development.Tests
                 .UseName("systemTestDoc")
                 .UseStatement(
                     new FunctionCall(
-                        "sys", "[ioprintln]",
+                        "sys", "ioprintln",
                         kwargs: new (string, Element)[]
                         {
                             (

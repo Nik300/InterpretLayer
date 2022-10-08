@@ -18,7 +18,17 @@ namespace Nik300.InterpretLayer.Types.Runtime
         public Type ReturnType { get; internal set; }
         public Statement[] Statements { get; internal set; }
         public BuiltInFunction BuiltIn { get; internal set; }
+        public Context DefinitionContext { get; internal set; }
 
+        internal Element Run(Document document)
+        {
+            if (DefinitionContext is null) throw new Exception("missing function context");
+            var context = new Context(DefinitionContext).UseName("function.context");
+            if (BuiltIn is not null) return BuiltIn(context, document);
+            for (int i = 0; i < Statements.Length; i++)
+                context = Statements[i].Execute(context, document);
+            return context.Return;
+        }
         internal Element Run(Context context, Document document)
         {
             if (BuiltIn is not null) return BuiltIn(context, document);

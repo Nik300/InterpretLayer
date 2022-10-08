@@ -1,0 +1,21 @@
+﻿VAR s: sys.String = "Hello World!"
+sys.println [s]
+
+s = "Test"
+sys.println { string = s }
+
+METHOD testFunc { arg1: sys.String }
+    sys.println [arg1]
+END METHOD
+
+CLASS testClass
+    PUBLIC VAR s: sys.String
+    
+    CONSTRUCTOR { str: sys.String }
+        this.s = str
+    END CONSTRUCTOR
+    
+    METHOD test
+        sys.println [this.s]
+    END METHOD
+END CLASS

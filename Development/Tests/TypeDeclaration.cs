@@ -30,7 +30,7 @@ namespace Development.Tests
                                             Function.Builder
                                                 .UseStatement(
                                                     new FunctionCall(
-                                                        "sys", "[ioprintln]",
+                                                        "sys", "ioprintln",
                                                         args: new Element[]
                                                         {
                                                             Element.Builder
@@ -64,7 +64,7 @@ namespace Development.Tests
                 )
                 .UseStatement(
                     new FunctionCall(
-                        "sys", "[ioprintln]",
+                        "sys", "ioprintln",
                         args: new Element[]
                         {
                             Element.Builder

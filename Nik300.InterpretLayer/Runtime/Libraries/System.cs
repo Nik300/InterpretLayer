@@ -16,7 +16,7 @@ namespace Nik300.InterpretLayer.Runtime.Libraries
         private SystemLib()
         {
             Lib.AddVariable(
-                "[ioprint]",
+                "ioprint",
                 new()
                 {
                     Type = Primitives.Method.Instance,
@@ -50,7 +50,7 @@ namespace Nik300.InterpretLayer.Runtime.Libraries
             );
 
             Lib.AddVariable(
-                "[ioprintln]",
+                "ioprintln",
                 new() {
                     Type = Primitives.Method.Instance,
                     Value = new() {
