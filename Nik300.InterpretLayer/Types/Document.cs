@@ -18,6 +18,7 @@ namespace Nik300.InterpretLayer.Types
         public Statement[] Statements { get; private set; } = Array.Empty<Statement>();
 
         internal int ptr = 0;
+        internal Dictionary<string, Label> labels = new();
 
         public static DocumentBuilder Builder { get { return new(); } }
 

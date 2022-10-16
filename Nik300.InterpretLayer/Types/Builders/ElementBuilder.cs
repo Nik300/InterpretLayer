@@ -5,9 +5,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Nik300.InterpretLayer.Types.Runtime;
+using Nik300.InterpretLayer.Runtime.Interop;
 
 namespace Nik300.InterpretLayer.Types.Builders
 {
+    sealed class ElementReference : Reference
+    {
+        internal Element ERef;
+
+        internal override bool Modifiable => false;
+        public override object Object => ERef.Object;
+        public override Element Value { get => ERef; set { } }
+        public override runtime.Type Type => ERef.Type;
+
+        internal ElementReference(Element eRef)
+        {
+            ERef = eRef;
+        }
+    }
+
     public sealed class ElementBuilder
     {
         public object Object { get; private set; } = null;
@@ -28,5 +44,6 @@ namespace Nik300.InterpretLayer.Types.Builders
             return this;
         }
         public Element Build() => new() { Object = Object, Type = Type };
+        public Reference BuildRef() => new ElementReference(Build());
     }
 }

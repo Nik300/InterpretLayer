@@ -25,7 +25,7 @@ namespace Development.Tests
                         Element.Builder
                             .UseType(Primitives.String.Instance)
                             .UseObject("Hello Var!")
-                            .Build()
+                            .BuildRef()
                     )
                 )
                 .UseStatement(new Debug());

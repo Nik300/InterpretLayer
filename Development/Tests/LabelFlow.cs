@@ -9,29 +9,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Nik300.InterpretLayer.Runtime.Interop;
+using Nik300.InterpretLayer.Types.Statements.Flow;
 
 namespace Development.Tests
 {
-    public class SystemLibrary: Test
+    public class LabelFlow : Test
     {
-        public override DocumentBuilder Script { get; } =
+        public override DocumentBuilder Script =>
             Document.Builder
-                .UseName("systemTestDoc")
+                .UseName("labelTestDoc")
+                .UseStatement(new LabelDef("test"))
                 .UseStatement(
                     new FunctionCall(
                         "sys", "ioprintln",
-                        kwargs: new (string, Reference)[]
+                        args: new Reference[]
                         {
-                            (
-                                "string",
-                                Element.Builder
-                                    .UseType(Primitives.String.Instance)
-                                    .UseObject("Hello System!")
-                                    .BuildRef()
-                            )
+                            Element.Builder
+                                .UseType(Primitives.String.Instance)
+                                .UseObject("Loop")
+                                .BuildRef()
                         }
                     )
-                );
-        public override string Name { get; } = "System Library";
+                )
+                .UseStatement(new LabelJump("test"));
+
+        public override string Name => "Label Flow";
     }
 }

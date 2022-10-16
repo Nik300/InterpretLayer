@@ -19,17 +19,17 @@ namespace Nik300.InterpretLayer.Types.Statements.General
         string ContextName { get; }
         Reference ThisReference { get; }
 
-        Element[] Args { get; }
-        (string, Element)[] KWArgs { get; set; }
+        Reference[] Args { get; }
+        (string, Reference)[] KWArgs { get; }
 
-        public FunctionCall(string function, Reference obj = null, Element[] args = null, (string, Element)[] kwargs = null)
+        public FunctionCall(string function, Reference obj = null, Reference[] args = null, (string, Reference)[] kwargs = null)
         {
             FunctionName = function;
             Args = args;
             KWArgs = kwargs;
             ThisReference = obj;
         }
-        public FunctionCall(string contextName, string function, Reference obj = null, Element[] args = null, (string, Element)[] kwargs = null)
+        public FunctionCall(string contextName, string function, Reference obj = null, Reference[] args = null, (string, Reference)[] kwargs = null)
         {
             ContextName = contextName;
             FunctionName = function;
@@ -37,7 +37,7 @@ namespace Nik300.InterpretLayer.Types.Statements.General
             Args = args;
             KWArgs = kwargs;
         }
-        public FunctionCall(Reference function, Reference obj = null, Element[] args = null, (string, Element)[] kwargs = null)
+        public FunctionCall(Reference function, Reference obj = null, Reference[] args = null, (string, Reference)[] kwargs = null)
         {
             FunctionReference = function;
             ThisReference = obj;
@@ -58,7 +58,7 @@ namespace Nik300.InterpretLayer.Types.Statements.General
                 throw new Exception("Function name was not given");
             }
 
-            f.Type.Call(currentContext, document, f, ThisReference?.Value, Args, KWArgs);
+            f.Type.Call(currentContext, document, f, ThisReference?.Value, Args?.Select(x => x.Value).ToArray(), KWArgs?.Select(x => (x.Item1, x.Item2.Value)).ToArray());
             return currentContext;
         }
     }

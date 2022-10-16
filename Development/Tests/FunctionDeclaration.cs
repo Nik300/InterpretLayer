@@ -29,7 +29,7 @@ namespace Development.Tests
                                     Element.Builder
                                         .UseType(Primitives.String.Instance)
                                         .UseObject("Hello Func!")
-                                        .Build()
+                                        .BuildRef()
                                 )
                             )
                             .UseStatement(new Debug())

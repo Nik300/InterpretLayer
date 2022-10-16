@@ -17,30 +17,30 @@ namespace Nik300.InterpretLayer.Types.Statements.Definition
 
         private string VarName { get; }
         private runtime.Type VarType { get; }
-        private Element VarElement { get; }
+        private Reference VarElement { get; }
         private Modifier[] VarModifiers { get; }
         private Reference VarReference { get; }
 
         protected override Context ExecuteStatement(Context currentContext, Document document)
         {
-            Variable v = new() { Type = VarType, Value = VarElement, Modifiers = VarModifiers };
+            Variable v = new() { Type = VarType, Value = VarElement?.Value ?? Primitives.Anything.Null, Modifiers = VarModifiers };
             VarReference.Ref = v;
             return currentContext.AddVariable(VarName, v);
         }
 
-        public VariableDef(string name, out Reference reference, runtime.Type type = null, Element element = null, Modifier[] modifiers = null)
+        public VariableDef(string name, out Reference reference, runtime.Type type = null, Reference element = null, Modifier[] modifiers = null)
         {
             VarName = name;
             VarType = type ?? Primitives.Anything.Instance;
-            VarElement = element ?? Primitives.Anything.Null;
+            VarElement = element;
             VarModifiers = modifiers ?? Array.Empty<Modifier>();
             reference = VarReference = new();
         }
-        public VariableDef(string name, runtime.Type type = null, Element element = null, Modifier[] modifiers = null)
+        public VariableDef(string name, runtime.Type type = null, Reference element = null, Modifier[] modifiers = null)
         {
             VarName = name;
             VarType = type ?? Primitives.Anything.Instance;
-            VarElement = element ?? Primitives.Anything.Null;
+            VarElement = element;
             VarModifiers = modifiers ?? Array.Empty<Modifier>();
             VarReference = new();
         }

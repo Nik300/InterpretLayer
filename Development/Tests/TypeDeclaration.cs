@@ -31,12 +31,12 @@ namespace Development.Tests
                                                 .UseStatement(
                                                     new FunctionCall(
                                                         "sys", "ioprintln",
-                                                        args: new Element[]
+                                                        args: new Reference[]
                                                         {
                                                             Element.Builder
                                                                 .UseType(Primitives.String.Instance)
                                                                 .UseObject("CTOR called!")
-                                                                .Build()
+                                                                .BuildRef()
                                                         }
                                                     )
                                                 )
@@ -54,7 +54,7 @@ namespace Development.Tests
                                             Element.Builder
                                                 .UseType(Primitives.String.Instance)
                                                 .UseObject("Object created!")
-                                                .Build()
+                                                .BuildRef()
                                         )
                                     )
                                     .Build()
@@ -65,12 +65,12 @@ namespace Development.Tests
                 .UseStatement(
                     new FunctionCall(
                         "sys", "ioprintln",
-                        args: new Element[]
+                        args: new Reference[]
                         {
                             Element.Builder
                                 .UseType(Primitives.String.Instance)
                                 .UseObject("Type built!")
-                                .Build()
+                                .BuildRef()
                         }
                     )
                 )
