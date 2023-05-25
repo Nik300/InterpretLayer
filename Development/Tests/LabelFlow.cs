@@ -15,7 +15,7 @@ namespace Development.Tests
 {
     public class LabelFlow : Test
     {
-        public override DocumentBuilder Script =>
+        public DocumentBuilder Script =>
             Document.Builder
                 .UseName("labelTestDoc")
                 .UseStatement(new LabelDef("test"))
@@ -33,6 +33,6 @@ namespace Development.Tests
                 )
                 .UseStatement(new LabelJump("test"));
 
-        public override string Name => "Label Flow";
+        public string Name => "Label Flow";
     }
 }

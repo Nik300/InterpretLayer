@@ -50,7 +50,7 @@ This is basically the interpreter of an abstract language, designed to be flexib
 &emsp;• <i>HTML</i> support<br/>
 
 ## How to use
-The interpreter is at a very early stage, but it already supports some basic statements, and even has two print functions ([ioprintln] and [ioprint]).<br/>
+The interpreter is at a very early stage, but it already supports some basic statements, and even has two print functions (ioprintln and ioprint).<br/>
 The function names are enclosed into brackets to clearly specify that those are internal functions and those names should be replaced with whatever the language is supposed to have.<br/>
 Let's, for instance, have a very common test script executing:
 ```C#
@@ -68,7 +68,7 @@ var doc = Document.Builder
                 .UseStatement(  // UseStatement simply adds a new statement to the current document
                     new FunctionCall( // This statement is pretty self explainatory, it's used to call a function
                         "sys",  // this is the library, or context, where to look for the function
-                        "[ioprintln]",  // and this is the actual function name
+                        "ioprintln",  // and this is the actual function name
                         args: new Element[] // list of arguments
                         {
                             Element.Builder

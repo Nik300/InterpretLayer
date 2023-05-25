@@ -15,7 +15,7 @@ namespace Development.Tests
 {
     public class VariableDeclaration: Test
     {
-        public override DocumentBuilder Script { get; } =
+        public DocumentBuilder Script { get; } =
             Document.Builder
                 .UseName("varTestDoc")
                 .UseStatement(
@@ -29,6 +29,6 @@ namespace Development.Tests
                     )
                 )
                 .UseStatement(new Debug());
-        public override string Name { get; } = "Variable Declaration";
+        public string Name { get; } = "Variable Declaration";
     }
 }

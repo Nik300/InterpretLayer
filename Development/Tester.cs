@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace Development
 {
-    public abstract class Test
+    public interface Test
     {
         public abstract DocumentBuilder Script { get; }
         public abstract string Name { get; }
-        internal Test() { }
     }
     public static class Tester
     {

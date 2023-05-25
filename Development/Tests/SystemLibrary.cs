@@ -14,7 +14,7 @@ namespace Development.Tests
 {
     public class SystemLibrary: Test
     {
-        public override DocumentBuilder Script { get; } =
+        public DocumentBuilder Script { get; } =
             Document.Builder
                 .UseName("systemTestDoc")
                 .UseStatement(
@@ -32,6 +32,6 @@ namespace Development.Tests
                         }
                     )
                 );
-        public override string Name { get; } = "System Library";
+        public string Name { get; } = "System Library";
     }
 }

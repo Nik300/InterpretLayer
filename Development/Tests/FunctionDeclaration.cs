@@ -15,7 +15,7 @@ namespace Development.Tests
 {
     public class FunctionDeclaration: Test
     {
-        public override DocumentBuilder Script { get; } =
+        public DocumentBuilder Script { get; } =
             Document.Builder
                 .UseName("functionTestDoc")
                 .UseStatement(
@@ -38,6 +38,6 @@ namespace Development.Tests
                     )
                 )
                 .UseStatement(new FunctionCall(testFunc));
-        public override string Name { get; } = "Function Declaration";
+        public string Name { get; } = "Function Declaration";
     }
 }

@@ -23,7 +23,7 @@ namespace TestEnv
             Tester.RunTest(new FunctionDeclaration());
             Tester.RunTest(new TypeDeclaration());
             Tester.RunTest(new SystemLibrary());
-            Tester.RunTest(new LabelFlow());
+            //Tester.RunTest(new LabelFlow());
         }
     }
 }

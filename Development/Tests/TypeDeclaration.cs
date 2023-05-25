@@ -13,80 +13,80 @@ using Nik300.InterpretLayer.Runtime.Interop;
 
 namespace Development.Tests
 {
-    public class TypeDeclaration : Test
-    {
-        public override DocumentBuilder Script => 
-            Document.Builder
-                .UseName("typeTestDoc")
-                .UseStatement(
-                    new TypeDef(
-                        TypeLayout.Builder
-                            .UseName("TestType")
-                            .UseStaticConstructor(
-                                Function.Builder
-                                    .UseStatement(
-                                        new FunctionDef(
-                                            "[ctor]",
-                                            Function.Builder
-                                                .UseStatement(
-                                                    new FunctionCall(
-                                                        "sys", "ioprintln",
-                                                        args: new Reference[]
-                                                        {
-                                                            Element.Builder
-                                                                .UseType(Primitives.String.Instance)
-                                                                .UseObject("CTOR called!")
-                                                                .BuildRef()
-                                                        }
-                                                    )
-                                                )
-                                                .Build()
-                                        )
-                                    )
-                                    .Build()
-                            )
-                            .UseObjectConstructor(
-                                Function.Builder
-                                    .UseStatement(
-                                        new VariableDef(
-                                            "testObjectVar",
-                                            Primitives.String.Instance,
-                                            Element.Builder
-                                                .UseType(Primitives.String.Instance)
-                                                .UseObject("Object created!")
-                                                .BuildRef()
-                                        )
-                                    )
-                                    .Build()
+  public class TypeDeclaration : Test
+  {
+    public DocumentBuilder Script =>
+        Document.Builder
+            .UseName("typeTestDoc")
+            .UseStatement(
+              new TypeDef(
+                TypeLayout.Builder
+                  .UseName("TestType")
+                  .UseStaticConstructor(
+                    Function.Builder
+                      .UseStatement(
+                        new FunctionDef(
+                          "[ctor]",
+                          Function.Builder
+                            .UseStatement(
+                              new FunctionCall(
+                                "sys", "ioprintln",
+                                args: new Reference[]
+                                {
+                                  Element.Builder
+                                    .UseType(Primitives.String.Instance)
+                                    .UseObject("CTOR called!")
+                                    .BuildRef()
+                                }
+                              )
                             )
                             .Build()
-                    )
-                )
-                .UseStatement(
-                    new FunctionCall(
-                        "sys", "ioprintln",
-                        args: new Reference[]
-                        {
-                            Element.Builder
-                                .UseType(Primitives.String.Instance)
-                                .UseObject("Type built!")
-                                .BuildRef()
-                        }
-                    )
-                )
-                .UseStatement(
-                    new VariableDef(
-                        "testRes",
-                        out Reference resRef
-                    )
-                )
-                .UseStatement(
-                    new TypeConstruct(
-                        "TestType",
-                        resRef
-                    )
-                );
+                        )
+                      )
+                      .Build()
+                  )
+                  .UseObjectConstructor(
+                    Function.Builder
+                      .UseStatement(
+                        new VariableDef(
+                          "testObjectVar",
+                          Primitives.String.Instance,
+                          Element.Builder
+                            .UseType(Primitives.String.Instance)
+                            .UseObject("Object created!")
+                            .BuildRef()
+                        )
+                      )
+                      .Build()
+                  )
+                  .Build()
+              )
+            )
+            .UseStatement(
+              new FunctionCall(
+                "sys", "ioprintln",
+                args: new Reference[]
+                {
+                  Element.Builder
+                    .UseType(Primitives.String.Instance)
+                    .UseObject("Type built!")
+                    .BuildRef()
+                }
+              )
+            )
+            .UseStatement(
+              new VariableDef(
+                "testRes",
+                  out Reference resRef
+              )
+            )
+            .UseStatement(
+              new TypeConstruct(
+                "TestType",
+                resRef
+              )
+            );
 
-        public override string Name => "TypeDeclaration";
-    }
+    public string Name => "TypeDeclaration";
+  }
 }
