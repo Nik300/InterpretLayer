@@ -1,9 +1,4 @@
 ﻿using Nik300.InterpretLayer.Runtime.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Nik300.InterpretLayer.Types.Runtime
 {
@@ -13,17 +8,32 @@ namespace Nik300.InterpretLayer.Types.Runtime
         public virtual Type Parent { get; } = null;
         public virtual Context DefinitionContext { get; }
         public string FullName => $"{DefinitionContext.Name}.{Name}";
+        public virtual bool IsPrimitive => true;
 
         public abstract bool Contains(string childName);
-        
+
         public abstract bool Scriptable();
         public abstract bool Callable();
 
+        protected Element CtorCast(Element element)
+        {
+            if (element.Type is not Primitives.TypeName typeName || !element.Type.Contains("[string]"))
+                return Primitives.Anything.Null;
+
+            Element ctor = typeName.Get(DefinitionContext, element, $"[{Name}]");
+            return ctor.Type.Call(
+                typeName.DefinitionContext,
+                typeName.DefinitionDocument,
+                ctor,
+                element
+            );
+
+        }
         public abstract Element Cast(Element element);
 
         internal bool Validate()
         {
-            return 
+            return
                 Name != null && DefinitionContext != null && DefinitionContext.Name != null &&
                 Name.Trim() != "" && DefinitionContext.Name.Trim() != "" &&
                 !Name.Contains(' ') && !DefinitionContext.Name.Contains(' ');

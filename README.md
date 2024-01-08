@@ -1,9 +1,12 @@
 # Nik300.InterpretLayer
+
 ## Introduction
+
 This layer aims at making it easier for developers to <b>create</b> their own <b>programming language</b>. <br/>
 This is basically the interpreter of an abstract language, designed to be flexible and adaptable to any kind of parser.
 
 ## Roadmap
+
 <b>InterpretLayer roadmap</b>:<br/>
 &emsp;• <i>preliminary works</i> (values, variables, functions, ...) ✅<br/>
 &emsp;• <b>Types declaration</b> (class, struct, ...) ✅<br/>
@@ -37,9 +40,9 @@ This is basically the interpreter of an abstract language, designed to be flexib
 &emsp;&emsp;&emsp;• <b>anything</b> ✅<br/>
 &emsp;&emsp;&emsp;• <b>method</b> ✅<br/>
 &emsp;&emsp;&emsp;• <b>typeInfo</b> ✅<br/>
-&emsp;&emsp;&emsp;• <b>integer</b><br/>
+&emsp;&emsp;&emsp;• <b>integer ✅</b><br/>
 &emsp;&emsp;&emsp;• <b>boolean</b><br/>
-&emsp;&emsp;&emsp;• <b>double</b>/<b>float</b><br/>
+&emsp;&emsp;&emsp;• <b>float</b><br/>
 &emsp;&emsp;&emsp;• <b>array</b><br/>
 &emsp;&emsp;&emsp;• <b>dictionary</b><br/>
 &emsp;&emsp;&emsp;• <b>list</b><br/>
@@ -50,9 +53,11 @@ This is basically the interpreter of an abstract language, designed to be flexib
 &emsp;• <i>HTML</i> support<br/>
 
 ## How to use
+
 The interpreter is at a very early stage, but it already supports some basic statements, and even has two print functions (ioprintln and ioprint).<br/>
 The function names are enclosed into brackets to clearly specify that those are internal functions and those names should be replaced with whatever the language is supposed to have.<br/>
 Let's, for instance, have a very common test script executing:
+
 ```C#
 using Nik300.InterpretLayer.Types;
 using Nik300.InterpretLayer.Types.Builders;
@@ -86,14 +91,18 @@ while ((context = doc.RunNext(context)) != null) ; // and here we execute the do
 // output:
 // Hello World!
 ```
+
 A pseudo-code representation of this script would be something like this:
+
 ```C#
 sys.println("Hello World!");
 ```
+
 As you can see I've payed particular attention to details and tried to make this library as easy to use as possible.<br/>
 This is chiefly because this library is for those of you who want to create languages compatible with cosmos os, and thus need some help with the runtime.<br/>
 If you're curious and wanna look for other statements, please have a look at Development/Tests.
 
 ## Contribution
+
 Any form of help is welcome, just pull request with details and i'll be more than happy to review the request and merge it as soon as possible! <br/><br/>
 Please contact me if you're intrested in becoming a contributor to the project, I might need some help ;)

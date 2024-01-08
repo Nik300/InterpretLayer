@@ -20,6 +20,7 @@ namespace Nik300.InterpretLayer.Runtime.Types
             public Document DefinitionDocument { get; }
             public Context TypeContext { get; }
             public Function OCTOR { get; }
+            public override bool IsPrimitive => false;
 
             public TypeName(Document doc, string name, Context definitionContext, Function OCTOR = null, Context typeContext = null)
             {

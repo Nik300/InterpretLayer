@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Nik300.InterpretLayer.Types.Runtime;
+using Nik300.InterpretLayer.Types.Builders;
 
 namespace Nik300.InterpretLayer.Runtime.Types
 {
@@ -17,14 +18,18 @@ namespace Nik300.InterpretLayer.Runtime.Types
             public override string Name => "string";
             public override Context DefinitionContext => Anything.SystemContext;
 
+            private static Element PrimitiveToString(Element element)
+            {
+                return Element.Builder
+                    .UseType(Instance)
+                    .UseObject(element.Object.ToString())
+                    .Build();
+            }
+
             public override bool Callable() => false;
             public override Element Cast(Element element)
             {
-                return 
-                    Element.Builder
-                        .UseType(this)
-                        .UseObject(element.Object.ToString())
-                        .Build();
+                return element.Type.IsPrimitive ? PrimitiveToString(element) : CtorCast(element);
             }
             public override bool Compare(runtime.Type other)
             {
